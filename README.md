@@ -27,17 +27,6 @@ Before running the application, make sure the following are installed:
 
 ---
 
-## 🔻 Download and Set Up the Project
-
-1. Go to the GitHub repository:  
-   https://github.com/Reshmitj/online_vote_app
-
-2. Click on the green **"Code"** button → Select **Download ZIP**
-
-3. Unzip the downloaded file to a location of your choice
-
----
-
 ## 🛠️ Run Backend (Spring Boot with H2 DB)
 
 > Run using **Spring Tool Suite (STS) IDE only**
