@@ -42,11 +42,18 @@ export const getVoterInfo = async (email) => {
 
 // ✅ Voter Login
 export const loginUser = async (email, password) => {
-  const response = await axios.post(`${VOTER_API_BASE_URL}/login`, null, {
-    params: { email, password },
+  const response = await axios.post(`${VOTER_API_BASE_URL}/login`, {
+    email,
+    password
+  }, {
+    headers: {
+      "Content-Type": "application/json",
+    }
   });
   return response.data;
 };
+
+
 
 // ✅ Admin Login
 export const loginAdmin = async (email, password) => {

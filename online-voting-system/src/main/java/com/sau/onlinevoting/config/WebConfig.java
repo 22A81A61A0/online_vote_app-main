@@ -14,10 +14,13 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://online-vote-app-main-1.onrender.com")
+                        .allowedOrigins(
+                            "https://online-vote-app-main-1.onrender.com", // Your frontend
+                            "http://localhost:3000" // For local testing
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true); // Needed if sending cookies or auth headers
+                        .allowCredentials(true);
             }
         };
     }
