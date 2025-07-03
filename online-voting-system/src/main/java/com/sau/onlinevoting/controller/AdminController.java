@@ -41,22 +41,23 @@ public class AdminController {
 
     // ✅ Admin Login - Updated to accept JSON body
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginAdmin(@RequestBody Map<String, String> payload) {
-        String email = payload.get("email");
-        String password = payload.get("password");
+public ResponseEntity<Map<String, String>> loginAdmin(@RequestBody Map<String, String> payload) {
+    String email = payload.get("email");
+    String password = payload.get("password");
 
-        Map<String, String> response = new HashMap<>();
-        Optional<Admin> admin = adminRepository.findByEmail(email);
+    Map<String, String> response = new HashMap<>();
+    Optional<Admin> admin = adminRepository.findByEmail(email);
 
-        if (admin.isPresent() && admin.get().getPassword().equals(password)) {
-            response.put("message", "Login Successful");
-            response.put("redirect", "/admin-dashboard");
-            return ResponseEntity.ok(response);
-        } else {
-            response.put("message", "Invalid email or password");
-            return ResponseEntity.status(401).body(response);
-        }
+    if (admin.isPresent() && admin.get().getPassword().equals(password)) {
+        response.put("message", "Login Successful");
+        response.put("redirect", "/admin-dashboard");
+        return ResponseEntity.ok(response);
+    } else {
+        response.put("message", "Invalid email or password");
+        return ResponseEntity.status(401).body(response);
     }
+}
+
 
     // ✅ Get Pending Voters
     @GetMapping("/pending-voters")

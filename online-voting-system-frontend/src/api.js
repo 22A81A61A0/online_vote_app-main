@@ -50,11 +50,17 @@ export const loginUser = async (email, password) => {
 
 // ✅ Admin Login
 export const loginAdmin = async (email, password) => {
-  const response = await axios.post(`${ADMIN_API_BASE_URL}/login`, null, {
-    params: { email, password },
+  const response = await axios.post(`${ADMIN_API_BASE_URL}/login`, {
+    email,
+    password,
+  }, {
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   return response.data;
 };
+
 
 // ✅ Admin Get Pending Voters
 export const getPendingVoters = async () => {
