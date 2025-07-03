@@ -39,11 +39,11 @@ public class AdminController {
     @Autowired
     private VoteRepository voteRepository;
 
-    // ✅ Admin Login
+    // ✅ Admin Login - Updated to accept JSON body
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginAdmin(
-            @RequestParam String email,
-            @RequestParam String password) {
+    public ResponseEntity<Map<String, String>> loginAdmin(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        String password = payload.get("password");
 
         Map<String, String> response = new HashMap<>();
         Optional<Admin> admin = adminRepository.findByEmail(email);
@@ -110,7 +110,6 @@ public class AdminController {
         Map<String, Long> results = new HashMap<>();
 
         for (Object[] row : rawResults) {
-            // candidate_id might be Long or String depending on your schema
             String candidateId = String.valueOf(row[0]);
             Long voteCount = ((Number) row[1]).longValue();
             results.put(candidateId, voteCount);
